@@ -2,7 +2,8 @@
 layout: post
 title: [AI 이노베이션스퀘어_기본과정] Day1 수업내용
 tags:
-  - AI 이노베이션스퀘어 기본과정
+  - test
+  - tags
 ---
 
 ```python

@@ -14,6 +14,8 @@ permalink: /about/
 
 <br>
 
-### Contact me
+<br>
 
-[duohui12@gmail.com](mailto:duohui12@gmail.com)
+<br>
+
+<br>

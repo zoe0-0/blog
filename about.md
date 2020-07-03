@@ -4,12 +4,16 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+학습한 내용을 정리하는 블로그 입니다 :)
+
+<br>
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+`자료구조`,   `네트워크`,   `알고리즘`,   `Java`,   `Spring`,   `Web`,   `Python`,   `AI`,   `Linux`,   `Git`
+
+<br>
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[duohui12@gmail.com](mailto:duohui12@gmail.com)

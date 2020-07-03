@@ -3,7 +3,7 @@
 #
 
 # Name of your site (displayed in the header)
-name: Kiko Now
+name: DevBlog
 
 # Short bio or description (displayed in the header)
 description: 개발은 재밌어
@@ -39,7 +39,7 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: AWEEKJ/kiko-now
+  github: zoe0-0
   googleplus: # anything in your profile username that comes after plus.google.com/
   instagram:
   linkedin:
@@ -47,7 +47,7 @@ footer-links:
   rss: # just type anything here for a working RSS icon
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   tumblr: # https://<username>.tumblr.com
-  twitter: jekyllrb
+  twitter: 
   youtube: # channel/<your_long_string> or user/<user-name>
 
 # Text under the icons in footer

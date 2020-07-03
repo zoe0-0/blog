@@ -1,0 +1,247 @@
+I"�?<p><br /></p>
+
+<blockquote>
+  <h3 id="파이썬-기본문법-학습">파이썬 기본문법 학습</h3>
+</blockquote>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'3.7.6 (default, Jan  8 2020, 13:42:34) \n[Clang 4.0.1 (tags/RELEASE_401/final)]'
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">c</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="노트북-단축키-요약">노트북 단축키 요약</h3>
+
+<ul>
+  <li>shift + enter : 셀 실행 후 다음 셀로 이동</li>
+  <li>alt + enter : 셀 실행 후 다음에 셀을 추가</li>
+  <li>Tab : 들여쓰기</li>
+  <li>shift + Tab : 들여쓰기 해제</li>
+  <li>ctrl + ‘/’ : 주석문 설정/해제</li>
+  <li>ESC -&gt; ‘m’ : mark down</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="정수형">정수형</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#파이썬 자료형
+</span><span class="n">a</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'int'&gt;
+100
+0b1010
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="실수형--float">실수형 : float</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="mf">10.54</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">#형변환
+</span><span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.54
+10.0 &lt;class 'float'&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="객체--파이썬의-모든-변수-데이터형은-객체로-관리된다">객체 : 파이썬의 모든 변수, 데이터형은 객체로 관리된다</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">30</span>  <span class="c1">#int형 클래스의 인스턴스 객체 생성
+</span><span class="k">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">40</span>  <span class="c1">#int형 클래스의 인스턴스 객체 생성
+</span><span class="k">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="n">b</span><span class="o">=</span><span class="n">a</span>   <span class="c1">#참조값 변경
+</span><span class="k">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">50</span>  <span class="c1">#int형 클래스의 인스턴스 객체 생성
+</span><span class="k">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1">#int형 클래스의 인스턴스 객체 생성
+</span><span class="k">print</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+
+<span class="k">del</span> <span class="n">b</span>
+<span class="c1">#print(hex(id(b)))
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0x10337b820
+0x10337b960
+0x10337b820
+0x10337baa0
+a 0x105a02990
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#### 사칙연산
+# // 정수 나누기
+# ** 제곱
+</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<span class="n">ff</span> <span class="o">=</span> <span class="n">a</span><span class="o">//</span><span class="n">b</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">ff</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="n">b</span>  <span class="c1">#제곱
+</span><span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 &lt;class 'int'&gt;
+3.3333333333333335 &lt;class 'float'&gt;
+1000
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mf">10.</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="표준입출력">표준입출력</h3>
+
+<p>#표준 입력 : 변수=input( )</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100
+100
+&lt;class 'str'&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">math</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"수학점수"</span><span class="p">)</span>
+<span class="n">english</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"영어점수"</span><span class="p">)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="p">)</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">english</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>수학점수100
+영어점수100
+200
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="표준출력--print">표준출력 : print()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'a:'</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="s">'b:'</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a: 4 b: 5
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#end
+</span><span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s">'    '</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2    3 4
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#sep
+</span><span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">" &amp; "</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 &amp; 2 &amp; 3 &amp; 4 &amp; 5
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="print-formatting">print formatting</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">num_2</span> <span class="o">=</span> <span class="mf">1.234</span>
+<span class="n">str_1</span> <span class="o">=</span> <span class="s">"Hello python"</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"int형 : </span><span class="si">%</span><span class="s">d"</span><span class="o">%</span><span class="n">num_1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"float형 : </span><span class="si">%</span><span class="s">f"</span><span class="o">%</span><span class="n">num_2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"문자열 </span><span class="si">%</span><span class="s">s"</span><span class="o">%</span><span class="n">str_1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"16진수 0x</span><span class="si">%</span><span class="s">x"</span><span class="o">%</span><span class="n">num_1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">d"</span><span class="o">%</span><span class="p">(</span><span class="n">str_1</span><span class="p">,</span><span class="mi">10000</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int형 : 10
+float형 : 1.234000
+문자열 Hello python
+16진수 0xa
+Hello python 10000
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#format() 함수 사용
+</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="mf">1.23456</span><span class="p">,</span><span class="s">"7.6f"</span><span class="p">))</span>  <span class="c1">#전체 7자리 소숫점은 6자리로 표현
+</span>
+<span class="c1">#
+</span><span class="k">print</span><span class="p">(</span><span class="s">'{} + {}'</span> <span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"math"</span><span class="p">,</span><span class="s">"eng"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'{:*&lt;10} : {:&gt;5}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"dahye"</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'{:*&lt;10} : {:&gt;5}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"dahyeJung"</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'{:*&lt;10} : {:&gt;5}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"amy"</span><span class="p">,</span><span class="mi">152</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'{:!^10}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"hello"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.234560
+math + eng
+dahye***** :   100
+dahyeJung* :     1
+amy******* :   152
+!!hello!!!
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="eval--함수--문자열로-표현된-파이썬-식을-인자로-받아-인터프리터가-번역하여-실행">eval( ) 함수 : 문자열로 표현된 파이썬 식을 인자로 받아 인터프리터가 번역하여 실행</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">express</span> <span class="o">=</span> <span class="s">'a'</span><span class="o">+</span><span class="s">'+'</span><span class="o">+</span><span class="s">'20'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">express</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">express</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a+20
+30
+</code></pre></div></div>
+
+:ET

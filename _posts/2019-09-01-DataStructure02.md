@@ -8,7 +8,9 @@ tags:
 
 <br>
 
-### 정렬되어있지 않은 LinkedList의 요소 중 중복값 제거하기 (단, 별도의 버퍼를 사용하지 않음)
+### 정렬되어있지 않은 LinkedList의 요소 중 중복값 제거하기 (단, 별도의 버퍼 사용x)
+
+<br>
 
 - Hashset을 이용할 경우, LinkedList를 돌면서 요소들을 Hashset에 넣고, 중복된 값이 나올 경우 삭제하면 됨
 - 별도의 공간을 사용하지 않을 경우, 두개의 포인터를 사용하여 구현 
@@ -16,26 +18,26 @@ tags:
 <br>
 
 ```java
-	void removeDups() {
-		Node n = header.next;
-    
-		while(n!=null && n.next!=null) {
-			Node runner = n; 
-      
-			while(runner.next!=null) {
-				if(runner.next.data == n.data) {
-					//제거하기
-					runner.next = runner.next.next;
-				}else {
-					//넘어가기
-				    runner = runner.next;
-				}
-			}
-      
-			n = n.next;
-		}
-    
-	}
+void removeDups() {
+  Node n = header.next;
+
+  while(n!=null && n.next!=null) {
+    Node runner = n; 
+
+    while(runner.next!=null) {
+      if(runner.next.data == n.data) {
+        //제거하기
+        runner.next = runner.next.next;
+      }else {
+        //넘어가기
+        runner = runner.next;
+      }
+    }
+
+    n = n.next;
+  }
+
+}
 ```
 
 - 시간복잡도 : O(N^2) / 공간복잡도 : O(1)

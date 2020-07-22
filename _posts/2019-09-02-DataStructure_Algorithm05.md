@@ -200,5 +200,3 @@ tags:
 [Linked List Digit합산 알고리즘 in Java](https://www.youtube.com/watch?v=vuJk2JZd3fI)
 
 <br>
-
-<br>

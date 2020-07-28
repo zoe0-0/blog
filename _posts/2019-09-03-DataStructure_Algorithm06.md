@@ -108,7 +108,7 @@ class Queue<T>{
 
 ---
 
-[Stack 구현하기 in Java](https://www.youtube.com/watch?v=whVUYv0Leg0)
+[엔지니어 대한민국 - Stack 구현하기 in Java](https://www.youtube.com/watch?v=whVUYv0Leg0)
 
 <br>
 

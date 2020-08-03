@@ -1,7 +1,7 @@
 ---
 layout: post
 title: (백준 알고리즘_12904) A와 B
-tags
+tags:
   - 알고리즘(BOJ)
 ---
 

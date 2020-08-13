@@ -82,18 +82,20 @@ tags:
   ```java
   //방향관련 배열
   //0:위쪽방향  1:아랫쪽 방향  2:오른쪽방향  3.왼쪽방향
-  //direction[i][0] => 현재방향이 i일때 왼쪽(L)으로 돌았을 때의 방향.
-  //direction[i][1] => 현배방향이 i일때 오른쪽(D)으로 돌았을때의 방향
+  //direction[i][0] => 현재방향이 i일때 왼쪽으로 돌았을 때의 방향.
+  //direction[i][1] => 현배방향이 i일때 오른쪽으로 돌았을때의 방향
   int[][] direction = {{3,2},{2,3},{0,1},{1,0}};
   
-  //현재 방향이 i일 때 (0:위쪽방향  1:아랫쪽 방향  2:오른쪽방향  3.왼쪽방향),
+  //방향이 i일 때 (0:위쪽방향  1:아랫쪽 방향  2:오른쪽방향  3.왼쪽방향) 
   //다음 스텝을 가는 방법 => x+step[i][0], y+step[i][1]
-  int[][] step = {{-1,0,},{1,0},{0,1},{0,-1}};
+  int[][] step = {{-1,0,},{1,0},{0,1},{0,-1}};	    
   ```
 
 - 뱀의 머리가 이동하다가 사과가 없는 칸에 도착했을 때는 몸길이를 줄여서 꼬리가 위치한 칸을 비워줘야 한다. 따라서 꼬리의 위치를 기억하고 있어야 한다. 처음 뱀의 길이가 1일 때부터 그 위치를 큐에 기록한다. 이동한 칸에 사과가 존재하면 꼬리는 그대로 두고 길이를 늘리기 때문에, 현재 위치를 큐에 추가해 나간다. 이렇게 하면 큐에 맨 처음 부분에는 제일 먼저 들어온 꼬리의 위치 정보가 존재한다. 나중에 사과가 없는 칸을 만나면 큐에서 꼬리를 꺼내서 없앤다(FIFO).    
 
 <br>
+
+전체코드
 
 ```java
 public class Main {
@@ -130,24 +132,23 @@ public class Main {
 	    
 	    
 	    //init
-	    Queue<Pair> q =new LinkedList<>();  //뱀의 몸을 저장할 큐. 사과가 없을 경우 꼬리부터 없앤다. 
-	    int x = 0; int y = 0; //현재 뱀의 위치
+	    Queue<Pair> q =new LinkedList<>();  
+	    int x = 0; int y = 0; 
 	    map[x][y] = 1;
 		  q.add(new Pair(x,y));
-	    int dir = 2;  //현재 방향 
+	    int dir = 2; 
 	    
 	    
 		int time = 0;
 		while(true) {
 			time++;
-			//현재 위치 
 			int curx = x+step[dir][0];
 			int cury = y+step[dir][1];
 			//만약 이동한 위치가 map을 벗어나거나, 자신의 몸과 부딪히면 게임이 끝난다.
 		    if(curx<0 || curx>=n || cury<0 || cury>=n || map[curx][cury]==1) break;
 		    
-			if(map[curx][cury]!=2) { //사과가 없으면 => 몸길이를 줄여서 꼬리가 위치한 칸을 비워준다
-				Pair p = q.remove(); //LIFO - 가장 마지막. 즉 꼬리
+			if(map[curx][cury]!=2) { 
+				Pair p = q.remove(); 
 				map[p.x][p.y] = 0;
 			}
 			
@@ -165,15 +166,11 @@ public class Main {
 			}
 		
 		
-		}//while
+		}
 		
-	    System.out.println(time);	
-
-	
-	}//main
+	    System.out.println(time);		
+	}
 		
-
-
 }
 
 class Pair{

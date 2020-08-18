@@ -1,0 +1,182 @@
+---
+layout: post
+title: (백준 알고리즘_10825) 국영수
+tags:
+  - 알고리즘(BOJ)
+---
+
+<br>
+
+### [문제](https://www.acmicpc.net/problem/10825)
+
+---
+
+도현이네 반 학생 N명의 이름과 국어, 영어, 수학 점수가 주어진다. 이때, 다음과 같은 조건으로 학생의 성적을 정렬하는 프로그램을 작성하시오.
+
+1. 국어 점수가 감소하는 순서로
+2. 국어 점수가 같으면 영어 점수가 증가하는 순서로
+3. 국어 점수와 영어 점수가 같으면 수학 점수가 감소하는 순서로
+4. 모든 점수가 같으면 이름이 사전 순으로 증가하는 순서로 (단, 아스키 코드에서 대문자는 소문자보다 작으므로 사전순으로 앞에 온다.)
+
+<br>
+
+### 입력
+
+---
+
+첫째 줄에 도현이네 반의 학생의 수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 한 줄에 하나씩 각 학생의 이름, 국어, 영어, 수학 점수가 공백으로 구분해 주어진다. 점수는 1보다 크거나 같고, 100보다 작거나 같은 자연수이다. 이름은 알파벳 대소문자로 이루어진 문자열이고, 길이는 10자리를 넘지 않는다.
+
+<br>
+
+### 출력
+
+---
+
+문제에 나와있는 정렬 기준으로 정렬한 후 첫째 줄부터 N개의 줄에 걸쳐 각 학생의 이름을 출력한다.
+
+<br>
+
+### 예제 입력과 출력
+
+---
+
+```java
+//입력
+12
+Junkyu 50 60 100
+Sangkeun 80 60 50
+Sunyoung 80 70 100
+Soong 50 60 90
+Haebin 50 60 100
+Kangsoo 60 80 100
+Donghyuk 80 60 100
+Sei 70 70 70
+Wonseob 70 70 90
+Sanghyun 70 70 80
+nsj 80 80 80
+Taewhan 50 60 90
+```
+
+```java
+//출력
+Donghyuk
+Sangkeun
+Sunyoung
+nsj
+Wonseob
+Sanghyun
+Sei
+Kangsoo
+Haebin
+Junkyu
+Soong
+Taewhan
+```
+
+<br>
+
+### 풀이
+
+---
+
+- `Comparable 인터페이스` 는 `compareTo() ` 메서드를 구현해서 객체 간의 정렬을 수행한다. 
+- `compareTo()`  메서드 구현방법
+  - 리턴값이 음수 or 0이면 객체의 자리를 그대로 유지 (현재객체 -> 파라미터 객체), 양수인 경우에는 두 객체의 자리 바꾸기 (파라미터 객체 -> 현재객체)
+
+​	<br>
+
+- `compareTo()`
+  - **compareTo**() 함수는 <b>문자열 비교</b> 와 <b>숫자형 비교</b> 두 방식이 존재한다.
+  - 숫자형 비교는 Byte, Double, Integer, Float, Long ,Short 등을 비교할 수 있다
+  - int로 선언한 값을 비교하려면? => `Integer.compare(x,y)` 사용
+  - `기준값.compareTo(비교대상)`
+    - 기준값 == 비교대상 : 0
+    - 기준값 < 비교대상 : -1(숫자형 비교) / 음수값 (문자열 비교)
+    - 기준값 > 비교대상 : 1(숫자형 비교) / 양수값 (문자열 비교)
+
+<br>
+
+```java
+class Student implements Comparable<Student>{
+	String name;
+	int korean;
+	int english;
+	int math;
+	
+	Student(String name,int korean, int english, int math){
+		this.name = name;
+		this.korean = korean;
+		this.english = english;
+		this.math = math;
+	}
+
+  @Override
+	public int compareTo(Student other) {
+		int ret = 0;
+		if(this.korean!=other.korean) ret = Integer.compare(other.korean,this.korean);  //국어점수 내림차순
+		else if(this.english!=other.english) ret = Integer.compare(this.english, other.english); //영어점수 오름차순
+		else if(this.math!=other.math) ret = Integer.compare(other.math,this.math); //수학점수 내림차순
+		else return this.name.compareTo(other.name);  //이름 사전순 오름차순
+		return ret;
+	}
+}
+```
+
+<br>
+
+전체코드
+
+```java
+public class Main {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		Student[] arr = new Student[n];
+		for(int i=0; i<n; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			String name = st.nextToken();
+			int korean = Integer.parseInt(st.nextToken());
+			int english = Integer.parseInt(st.nextToken());
+			int math = Integer.parseInt(st.nextToken());
+			arr[i] = new Student(name,korean,english,math);
+		}
+		
+		Arrays.sort(arr);
+    
+		for(Student s : arr) {
+			System.out.println(s.name);
+		}
+    
+	}
+
+}
+
+class Student implements Comparable<Student>{
+	String name;
+	int korean;
+	int english;
+	int math;
+	
+	Student(String name,int korean, int english, int math){
+		this.name = name;
+		this.korean = korean;
+		this.english = english;
+		this.math = math;
+	}
+	
+	@Override
+	public int compareTo(Student other) {
+		int ret = 0;
+		if(this.korean!=other.korean) ret = Integer.compare(other.korean,this.korean);
+		else if(this.english!=other.english) ret = Integer.compare(this.english, other.english);
+		else if(this.math!=other.math) ret = Integer.compare(other.math,this.math);
+		else return this.name.compareTo(other.name);  
+		return ret;
+	}
+}
+```
+
+
+

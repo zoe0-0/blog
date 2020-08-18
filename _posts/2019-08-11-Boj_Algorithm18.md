@@ -79,53 +79,6 @@ Taewhan
 
 ---
 
-- `Comparable 인터페이스` 는 `compareTo() ` 메서드를 구현해서 객체 간의 정렬을 수행한다. 
-- `compareTo()`  메서드 구현방법
-  - 리턴값이 음수 or 0이면 객체의 자리를 그대로 유지 (현재객체 -> 파라미터 객체), 양수인 경우에는 두 객체의 자리 바꾸기 (파라미터 객체 -> 현재객체)
-
-​	<br>
-
-- `compareTo()`
-  - **compareTo**() 함수는 <b>문자열 비교</b> 와 <b>숫자형 비교</b> 두 방식이 존재한다.
-  - 숫자형 비교는 Byte, Double, Integer, Float, Long ,Short 등을 비교할 수 있다
-  - int로 선언한 값을 비교하려면? => `Integer.compare(x,y)` 사용
-  - `기준값.compareTo(비교대상)`
-    - 기준값 == 비교대상 : 0
-    - 기준값 < 비교대상 : -1(숫자형 비교) / 음수값 (문자열 비교)
-    - 기준값 > 비교대상 : 1(숫자형 비교) / 양수값 (문자열 비교)
-
-<br>
-
-```java
-class Student implements Comparable<Student>{
-	String name;
-	int korean;
-	int english;
-	int math;
-	
-	Student(String name,int korean, int english, int math){
-		this.name = name;
-		this.korean = korean;
-		this.english = english;
-		this.math = math;
-	}
-
-  @Override
-	public int compareTo(Student other) {
-		int ret = 0;
-		if(this.korean!=other.korean) ret = Integer.compare(other.korean,this.korean);  //국어점수 내림차순
-		else if(this.english!=other.english) ret = Integer.compare(this.english, other.english); //영어점수 오름차순
-		else if(this.math!=other.math) ret = Integer.compare(other.math,this.math); //수학점수 내림차순
-		else return this.name.compareTo(other.name);  //이름 사전순 오름차순
-		return ret;
-	}
-}
-```
-
-<br>
-
-전체코드
-
 ```java
 public class Main {
 
@@ -177,6 +130,4 @@ class Student implements Comparable<Student>{
 	}
 }
 ```
-
-
 

@@ -57,48 +57,45 @@ tags:
 
 ```java
 class Solution {
-    
-    public int minLen = 1000;
     public int solution(String s) {
-        if(s.length()==1) return 1;
+       
+        int minLen = s.length();
         for(int i=1; i<=s.length()/2; i++){
-            getLen(i,s);
-        }
-        return minLen;
-    }
-    
-    public void getLen(int step, String s){
-        StringBuilder sb = new StringBuilder();
-        int len = s.length();
-        int count = 0;
-        String prev = "";
-        int i=0;
-        for(i=0; i<len; i+=step){
-           if(i+step>len) break;
-           String cur = s.substring(i,i+step);
-           if(i==0){  //init
-               prev = cur;
-               count = 1;
-               continue;
-           }
-            
-           if(prev.equals(cur)){
-               count++;
-           }else{
-               if(count>1) sb.append(count);
-               sb.append(prev);
-               prev = cur;
-               count = 1;
-           }  
-   
+            minLen = Math.min(minLen,getLen(s,i));
         }
         
-        if(count>1) sb.append(count);
-        sb.append(prev);
-        if(i<len) sb.append(s.substring(i,len));
-         
-        int result = sb.toString().length();
-        minLen = Math.min(minLen,result);
+        return  minLen; 
+    }
+    
+    public int getLen(String str, int unit){ 
+        
+        String pre = str.substring(0,unit);
+        int index = unit;
+        int num = 1;
+        StringBuilder sb = new StringBuilder();
+        
+        while(index<str.length()){
+            String temp = "";
+            if(index+unit>str.length()) temp = str.substring(index,str.length());
+            else temp = str.substring(index,index+unit);
+            
+            if(temp.equals(pre)){ 
+                num++;
+            }else{
+                if(num!=1) sb.append(num);
+                sb.append(pre);
+                num=1;
+                pre = temp;
+            }
+            
+            index += unit;
+            
+        }//while
+        
+         if(num!=1) sb.append(num);
+         sb.append(pre);
+        
+        return sb.toString().length();
         
     }
 }

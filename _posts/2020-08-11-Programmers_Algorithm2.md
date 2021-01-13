@@ -135,3 +135,72 @@ class Solution {
 }
 ```
 
+<br>
+
+<br>
+
+- 다시 풀었을 때
+
+```java
+class Solution {
+    
+    public int n,m;
+    public int[][] map;
+    public int count = 0;  //홈의 갯수
+    
+    public boolean solution(int[][] key, int[][] lock) {
+       
+        n = lock.length;
+        m = key.length;
+        map = new int[n*3][n*3];
+            
+         for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                 map[i+n][j+n] = lock[i][j];
+                 if(lock[i][j]==0) count++; //홈갯수세기
+            }
+        }
+        
+        
+        for(int r=0; r<4; r++){ //4번의 회전
+            key = rotate(key);
+            for(int i=0; i<=n*3-m; i++){
+              for(int j=0; j<=n*3-m; j++){
+                 if(check(i,j,key)) return true;
+              }
+            }
+        }
+        
+        return false;
+    
+        
+    }
+    
+  
+    public boolean check(int x, int y, int[][] key){  
+        int temp = 0;
+        for(int i=0; i<m; i++){
+            for(int j=0; j<m; j++){
+                if(key[i][j]==1 && map[i+x][j+y]==1) return false; 
+                else if(key[i][j]==1 && map[i+x][j+y]==0 && n<=i+x && i+x<2*n && n<=j+y && j+y<2*n) temp++; 
+            }
+        }
+        return temp==count;   //자물쇠 안 모든 홈이 채워졌음을 의미
+    }
+    
+    
+  
+    public int[][] rotate(int[][] key){ //시계방향 90도 회전한 배열 리턴
+        int[][] new_key = new int[m][m];
+        for(int i=0; i<m; i++){
+            for(int j=0; j<m; j++){
+                new_key[j][m-i-1] = key[i][j];
+            }
+        }
+        return new_key;
+    }
+  
+  
+}
+```
+

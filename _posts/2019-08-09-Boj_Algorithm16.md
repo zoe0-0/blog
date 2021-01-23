@@ -178,3 +178,108 @@ class Pair{
 
 ```
 
+<br>
+
+<br>
+
+- 다시 풀었을 때
+
+```java
+public class Main {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		// TODO Auto-generated method stub
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		int[][] map = new int[n][n];
+		int k = Integer.parseInt(br.readLine());
+		//0.비어있다  1.사과  2.뱀의몸
+		for(int i=0; i<k; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int x = Integer.parseInt(st.nextToken())-1;
+			int y = Integer.parseInt(st.nextToken())-1;
+			map[x][y] = 1;
+		}
+		
+		int L = Integer.parseInt(br.readLine());
+		String[] rotate = new String[10001];
+		for(int i=0; i<L; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int time = Integer.parseInt(st.nextToken());
+			rotate[time] = st.nextToken();
+		}
+		
+		int x=0,y=0;
+		int time = 0;
+		int dir = 1; //1:오른쪽    2:아래쪽    3:왼쪽    4:위
+		
+		Queue<Snake> q = new LinkedList<>();
+		q.add(new Snake(x,y));
+		map[x][y] = 2;
+		
+		while(true) {
+        time++;	
+        Snake next = getNextPos(x,y,dir); //다음위치 받아옴
+        x = next.x; y = next.y;
+
+		    if(x<0 || x>=n || y<0 || y>=n || map[x][y]==2) break;
+		    
+		    if(map[x][y]==0){  //비어있는칸 
+		    	 Snake tail = q.poll();
+		    	 map[tail.x][tail.y] = 0;
+		    }  
+		    
+		    map[x][y]=2;
+	    	q.add(new Snake(x,y));
+		   
+
+		    if(rotate[time]==null || rotate[time].equals("")) continue;
+		    dir = getDir(dir,rotate[time]); 
+		    
+		}
+		
+				System.out.println(time);
+		
+	}
+	
+	public static int getDir(int dir, String rotate) {
+		if(rotate.equals("L")) {
+			dir--;
+			if(dir==0) dir=4;
+		}else {
+			dir++;
+			if(dir==5) dir=1;
+		}
+		return dir;
+	}
+	
+	
+	public static Snake getNextPos(int x, int y, int dir) {
+		if(dir==1) {  //오른쪽
+			y++;
+		}else if(dir==2) { //아래쪽
+			x++;
+		}else if(dir==3) {  //왼쪽
+			y--;
+		}else {   //위쪽
+			x--;
+		}
+		return new Snake(x,y);
+	}
+	
+	
+
+}
+
+
+class Snake{
+	int x; 
+	int y;
+	Snake(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+}
+```
+

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (알고리즘) 이진탐색(Binary Searh)을 이용해 upper_bound와 lower_bound 값 찾기
+title: (알고리즘) 이진탐색(Binary Searh)으로 upper_bound와 lower_bound 인덱스 구하기
 tags:
   - 알고리즘
 ---

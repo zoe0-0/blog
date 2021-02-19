@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (운영체제)System Structure & Program Execution
+title: (운영체제) System Structure & Program Execution
 tags:
   - 운영체제
 ---

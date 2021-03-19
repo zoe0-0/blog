@@ -73,7 +73,7 @@ union(parent,3,5)
 - 이때 아래와 같이 union을 수행하면, parent 배열은 아래 표와 같이 바뀐다
 
 ```java
-union(parent,4,5)
+union(parent,3,4)
 ```
 
 | 1    | 2    | 3    | 4    | 5    |

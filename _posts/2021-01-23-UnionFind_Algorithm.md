@@ -26,8 +26,12 @@ tags:
 
 ```java
   public int getParent(int[] parent, int x) {
-		if(parent[x] == x) return x;
-		return parent[x] = getParent(parent, parent[x]);
+		
+    if(x!=parent[x]) parent[x] = getParent(parent,parent[x]);
+    return parent[x];
+    
+    //if(parent[x] == x) return x;
+		//return parent[x] = getParent(parent, parent[x]);
 	}
 	
 	public void union(int[] parent, int a, int b) {
